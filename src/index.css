@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter/Inter-VariableFont_slnt,wght.ttf");
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Clases personalizadas usando Tailwind */
+@layer base {
+  body {
+      @apply font-['Inter'];
+  }
+}
+
