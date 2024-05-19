@@ -10,7 +10,7 @@
 /* Clases personalizadas usando Tailwind */
 @layer base {
   body {
-      @apply font-['Inter'];
+      @apply font-['Inter'] bg-primary;
   }
 }
 
