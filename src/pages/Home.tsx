@@ -3,27 +3,51 @@ import { getUsers } from "../services/xyzcorp.service";
 import UserCard from "../components/cards/UserCard";
 import { UserType } from "../types/User";
 import { Container } from "../components/Container";
+import SearchBar from "../components/SearchBar";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const query = searchParams.get("query") || "";
+  console.log(query);
+
   // Fetch data from API
   const [users, setUsers] = useState<UserType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await getUsers();
+
+      // Filter users by query, by all fields
+      if (query) {
+        const filteredUsers = data.filter((user) => {
+          return Object.values(user).some((value) => {
+            if (typeof value === "string") {
+              return value.toLowerCase().includes(query.toLowerCase());
+            }
+
+            return false;
+          });
+        });
+
+        setUsers(filteredUsers);
+        return;
+      }
       setUsers(data);
       console.log(data);
     };
 
     fetchData();
-  }, []);
+  }, [query]);
 
   return (
     <main className="text-white py-8">
       <Container>
+        <SearchBar />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {users.map((user, index) => (
-            <UserCard key={index} user={user} index={index} />
+            <UserCard key={index} user={user} />
           ))}
         </div>
       </Container>

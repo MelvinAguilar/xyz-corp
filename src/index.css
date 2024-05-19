@@ -14,3 +14,14 @@
   }
 }
 
+
+@layer components {
+  .interactive {
+    @apply  transition-all ring-1 dark:ring-gray-700 dark:hover:bg-gray-700;
+  }
+
+  .interactive-no-hover {
+    @apply transition-all ring-1 ring-gray-700;
+  }
+}
+

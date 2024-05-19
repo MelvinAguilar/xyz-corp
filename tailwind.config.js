@@ -18,10 +18,8 @@ export default {
       },
       colors: {
         'primary': '#000319',
-        'secondary': {
-          100: '#E2E2D5',
-          200: '#888883',
-        }
+        'secondary': 'rgb(8 11 39)',
+        'secondary-hover': 'rgb(12 16 47)',
       },
     },
   },
