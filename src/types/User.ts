@@ -1,11 +1,7 @@
-
-    // {
-    //     "id": 6914490,
-    //     "name": "Aamod Tagore",
-    //     "email": "aamod_tagore@harris.test",
-    //     "gender": "male",
-    //     "status": "inactive"
-    // },
-
-
-
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  gender: string;
+  status: string;
+}
