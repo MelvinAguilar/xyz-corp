@@ -1,5 +1,6 @@
 import React from "react";
 import { UserType } from "../../types/User";
+import { Link } from "react-router-dom";
 
 interface UserCardProps {
   user: UserType;
@@ -10,7 +11,7 @@ const UserCard = ({ user }: UserCardProps) => {
   const urlimage = `https://randomuser.me/api/portraits/${user.gender === "female" ? "women" : "men"}/${index}.jpg`;
 
   return (
-    <div className="rounded-2xl border border-[#363749]/[.9] px-4 py-6 text-center">
+    <div className="bg-secondary hover:bg-secondary-hover transition-all relative rounded-2xl border border-[#363749]/[.9] px-4 py-6 text-center">
       <div className="flex flex-col items-center justify-between gap-4">
         <img
           className="size-32 rounded-full border-2 border-[#03BFCB] p-2"
@@ -34,6 +35,12 @@ const UserCard = ({ user }: UserCardProps) => {
           <p className="text-[#A1A1AA]">
             {user.gender.charAt(0).toUpperCase() + user.gender.slice(1)}
           </p>
+          <Link
+            to={`/user/${user.id}/`}
+            className="absolute inset-0 h-full w-full"
+          >
+            <span className="sr-only">Ver mas detalles</span>
+          </Link>
         </div>
       </div>
     </div>

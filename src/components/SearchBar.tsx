@@ -13,26 +13,22 @@ const SearchBar = () => {
   const [search, setSearch] = useState(query || "");
 
   useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
-      if (search) {
-        const newUrl = formUrlQuery({
-          params: location.search,
-          key: "query",
-          value: search,
-        });
-
-        navigate(newUrl, { replace: true });
-      } else {
-        const newUrl = removeKeysFromQuery({
-          params: location.search,
-          keysToRemove: ["query"],
-        });
-
-        navigate(newUrl, { replace: true });
-      }
-    }, 300);
-
-    return () => clearTimeout(delayDebounceFn);
+    if (search) {
+      const newUrl = formUrlQuery({
+        params: location.search,
+        key: "query",
+        value: search,
+      });
+    
+      navigate(newUrl, { replace: true });
+    } else {
+      const newUrl = removeKeysFromQuery({
+        params: location.search,
+        keysToRemove: ["query"],
+      });
+    
+      navigate(newUrl, { replace: true });
+    }
   }, [search, navigate, location.search]);
 
   return (
