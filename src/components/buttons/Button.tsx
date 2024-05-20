@@ -8,7 +8,7 @@ interface CommonProps {
 }
 
 const baseStyles =
-  "rounded-lg px-4 py-3 font-poly bg-black/80 font-semibold hover:bg-black/60 text-white dark:bg-white dark:text-primary dark:hover:bg-white/80 transition-all text-black dark:text-white transition-all w-full block text-center";
+  "rounded-lg px-4 py-3 font-poly bg-black/80 font-semibold hover:bg-black/60 text-white dark:bg-white dark:text-primary dark:hover:bg-white/80 transition-all text-black transition-all w-full block text-center";
 const primaryStyles = "bg-primary hover:bg-primary-light";
 const secondaryStyles = "bg-auxiliary hover:bg-auxiliary-light";
 
