@@ -56,15 +56,13 @@ const PostForm = ({ id }: { id: string }) => {
         <button
           type="button"
           onClick={() => reset()}
-          className="mt-8 rounded-full border border-white px-6 py-3 text-xl font-bold 
-        transition-all hover:bg-white hover:text-black"
+          className="bg-secondary hover:bg-secondary-hover my-8 flex w-fit items-center gap-2 rounded-md border border-[#363749]/[.9] px-6 py-4 shadow-lg"
         >
           Borrar datos
         </button>
         <button
           type="submit"
-          className="mt-8 rounded-full border border-white px-6 py-3 text-xl font-bold 
-        transition-all hover:bg-white hover:text-black"
+          className="bg-secondary hover:bg-secondary-hover my-8 flex w-fit items-center gap-2 rounded-md border border-[#363749]/[.9] px-6 py-4 shadow-lg"
         >
           Enviar
         </button>
