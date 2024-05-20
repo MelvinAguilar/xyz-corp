@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 import SectionIntro from "../components/SectionIntro";
 import { LinkComponent } from "../components/buttons/Button";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 const Home = () => {
   const location = useLocation();
@@ -53,9 +54,12 @@ const Home = () => {
   }, [query, users]);
 
   return (
-    <main className="py-10 text-white">
+    <main className="py-10 text-black dark:text-white">
       <Container className="min-h-[80vh]">
-        <div className="flex flex-wrap items-center gap-8 lg:flex-nowrap">
+        <div className="flex justify-end">
+          <ThemeSwitcher />
+        </div>
+        <div className="flex flex-wrap items-center lg:flex-nowrap">
           <SectionIntro
             title="Usuarios"
             subtitle="Lista de usuarios"
@@ -67,8 +71,8 @@ const Home = () => {
             </LinkComponent>
           </div>
         </div>
-        
-        <section className="mb-8 flex w-full items-center justify-end gap-8">
+
+        <section className="mb-8 mt-8 flex w-full flex-wrap items-center justify-end gap-8 md:mt-0">
           <p>Buscador</p>
           <SearchBar />
         </section>

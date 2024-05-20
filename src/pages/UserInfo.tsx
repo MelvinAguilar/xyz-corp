@@ -10,6 +10,7 @@ import Loading from "../components/Loading";
 import PostCard from "../components/cards/PostCard";
 import { LinkComponent } from "../components/buttons/Button";
 import BackButton from "../components/buttons/BackButton";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 const UserInfo = () => {
   const { id } = useParams();
@@ -41,7 +42,7 @@ const UserInfo = () => {
 
   if (!user) {
     return (
-      <Container as="main" className="py-8 text-white">
+      <Container as="main" className="py-8 text-black dark:text-white">
         <h1>User Info</h1>
         <p>User not found</p>
       </Container>
@@ -51,20 +52,23 @@ const UserInfo = () => {
   const urlimage = getImageUrl(user);
 
   return (
-    <Container as="main" className="py-10 text-white">
-      <BackButton title="Volver al listado de usuarios" />
+    <Container as="main" className="py-10 text-black dark:text-white">
+      <div className="flex justify-between">
+        <BackButton title="Volver al listado de usuarios" />
+        <ThemeSwitcher />
+      </div>
       <SectionIntro
         title="Información del usuario"
         subtitle="Detalles del usuario y sus publicaciones"
         generalClassName="!pt-0"
       />
-      <div className="bg-secondary/50 grid gap-8 rounded-2xl border border-[#363749]/[.9] p-8 px-8 py-6 sm:grid-cols-[auto,1fr]">
+      <div className="grid gap-8 rounded-2xl border border-[#363749]/[.3] bg-gray-200 p-10 sm:grid-cols-[auto,1fr] dark:border-[#363749]/[.9] dark:bg-secondary/50">
         <img
           className="size-32 rounded-full border-2 border-[#03BFCB] p-2"
           src={urlimage}
           alt="user"
         />
-        <section className="flex gap-8 justify-between flex-wrap">
+        <section className="flex flex-wrap justify-between gap-8">
           <div>
             <h2 className="text-2xl font-bold">{user.name}</h2>
             <p className="mb-4 text-sm text-[#A1A1AA]">{user.email}</p>
@@ -84,10 +88,9 @@ const UserInfo = () => {
             </p>
           </div>
           <div>
-
-          <LinkComponent href={`/posts/new/${user.id}`}>
-            Agregar un nuevo post
-          </LinkComponent>
+            <LinkComponent href={`/posts/new/${user.id}`}>
+              Agregar un nuevo post
+            </LinkComponent>
           </div>
         </section>
       </div>

@@ -19,23 +19,23 @@ const SearchBar = () => {
         key: "query",
         value: search,
       });
-    
+
       navigate(newUrl, { replace: true });
     } else {
       const newUrl = removeKeysFromQuery({
         params: location.search,
         keysToRemove: ["query"],
       });
-    
+
       navigate(newUrl, { replace: true });
     }
   }, [search, navigate, location.search]);
 
   return (
-    <div className="bg-secondary hover:bg-secondary-hover relative w-full  sm:max-w-[30rem]">
+    <div className="relative w-full bg-gray-100 hover:bg-gray-300/50 sm:max-w-[30rem] dark:bg-secondary dark:hover:bg-secondary-hover">
       <input
         type="text"
-        className="w-full rounded-lg ring-[#363749]/[.9] ring-1 bg-transparent py-5 pl-[4.6rem] pr-3 shadow-lg"
+        className="w-full rounded-lg bg-transparent py-5 pl-[4.6rem] pr-3 shadow-md ring-1 ring-[#363749]/[.2] dark:ring-[#363749]/[.9]"
         placeholder="Buscar un usuario"
         value={search}
         onChange={(e) => setSearch(e.target.value)}

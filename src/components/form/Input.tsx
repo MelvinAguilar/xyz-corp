@@ -39,7 +39,7 @@ const Input: React.FC<InputProps> = ({
         aria-label={ariaLabel}
         aria-invalid={ariaInvalid}
         aria-describedby={`${name}-error`}
-        className={` bg-secondary hover:bg-secondary-hover mt-8 w-full rounded-sm border border-[#363749]/[.9] px-5 py-4 ${className}`}
+        className={` mt-8 w-full rounded-sm border border-[#363749]/[.3] bg-gray-100 px-5 py-4 hover:bg-gray-300/50 dark:border-[#363749]/[.9] dark:bg-secondary dark:hover:bg-secondary-hover ${className}`}
       />
       <div aria-live="polite" aria-atomic="true">
         {errors && errors.message && (

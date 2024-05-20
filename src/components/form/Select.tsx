@@ -50,7 +50,7 @@ const Select: React.FC<SelectProps> = ({
       <input {...field} type="hidden" value={field.value} />
       <button
         type="button"
-        className="bg-secondary hover:bg-secondary-hover flex w-full cursor-pointer items-center justify-between rounded-md border border-[#363749]/[.9] px-[1.5rem] py-[1.125rem] !pr-[1.125rem] text-left"
+        className="flex w-full cursor-pointer items-center justify-between rounded-md border border-[#363749]/[.3] bg-gray-100 px-[1.5rem] py-[1.125rem] !pr-[1.125rem] text-left hover:bg-gray-300/50 dark:border-[#363749]/[.9] dark:bg-secondary dark:hover:bg-secondary-hover"
         aria-haspopup="true"
         aria-expanded={isMenuOpen}
         onClick={toggleMenu}
@@ -63,7 +63,7 @@ const Select: React.FC<SelectProps> = ({
         <ArrowMenu width={12} height={12} />
       </button>
       {isMenuOpen && (
-        <div className="bg-secondary absolute right-0 z-10 mt-2 w-full origin-top-right rounded-md border border-[#363749]/[.9]">
+        <div className="absolute right-0 z-10 mt-2 w-full origin-top-right rounded-md border border-[#363749]/[.3] bg-gray-100 dark:bg-secondary dark:border-[#363749]/[.9]">
           <ul>
             {options.map((option) => (
               <li key={option.id}>

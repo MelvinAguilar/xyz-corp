@@ -10,7 +10,7 @@
 /* Clases personalizadas usando Tailwind */
 @layer base {
   body {
-      @apply font-['Inter'] bg-primary text-[1.15rem];
+      @apply font-['Inter'] bg-white dark:bg-primary text-[1.15rem];
   }
 
   #root {
@@ -20,13 +20,6 @@
 
 
 @layer components {
-  .interactive {
-    @apply  transition-all ring-1 dark:ring-gray-700 dark:hover:bg-gray-700;
-  }
-
-  .interactive-no-hover {
-    @apply transition-all ring-1 ring-gray-700;
-  }
 
   .min-h-inherit {
     min-height: inherit;

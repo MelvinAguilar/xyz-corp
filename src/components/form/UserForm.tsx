@@ -82,19 +82,19 @@ const UserForm = () => {
           </p>
         )}
       </div>
-      
+
       <div className="flex gap-8">
         <button
           type="button"
           onClick={() => reset()}
-          className="bg-secondary hover:bg-secondary-hover my-8 flex w-fit items-center gap-2 rounded-md border border-[#363749]/[.9] px-6 py-4 shadow-lg"
+          className="my-8 flex w-fit items-center gap-2 rounded-md border border-[#363749]/[.3] bg-gray-100 px-6 py-4 shadow-md hover:bg-gray-300/50 dark:border-[#363749]/[.9] dark:bg-secondary dark:hover:bg-secondary-hover"
         >
           Borrar datos
         </button>
 
         <button
           type="submit"
-          className="bg-secondary hover:bg-secondary-hover my-8 flex w-fit items-center gap-2 rounded-md border border-[#363749]/[.9] px-6 py-4 shadow-lg"
+          className="my-8 flex w-fit items-center gap-2 rounded-md border border-[#363749]/[.3] bg-gray-100 px-6 py-4 shadow-md hover:bg-gray-300/50 dark:border-[#363749]/[.9] dark:bg-secondary dark:hover:bg-secondary-hover"
         >
           Enviar
         </button>

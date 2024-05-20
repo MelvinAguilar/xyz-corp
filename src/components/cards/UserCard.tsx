@@ -10,7 +10,7 @@ const UserCard = ({ user }: UserCardProps) => {
   const urlimage = getImageUrl(user);
 
   return (
-    <li className="bg-secondary hover:bg-secondary-hover transition-all relative rounded-2xl border border-[#363749]/[.9] px-4 py-6 text-center">
+    <li className="relative rounded-2xl border border-[#363749]/[.3] bg-gray-100 px-4 py-6 text-center shadow-sm transition-all hover:bg-gray-300/50 dark:border-[#363749]/[.9] dark:bg-secondary dark:hover:bg-secondary-hover">
       <div className="flex flex-col items-center justify-between gap-4">
         <img
           className="size-32 rounded-full border-2 border-[#03BFCB] p-2"
