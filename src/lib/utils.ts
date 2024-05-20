@@ -1,28 +1,34 @@
-import { RefObject, useEffect } from 'react'
+import { RefObject, useEffect } from "react";
 import qs from "query-string";
+import { UserType } from "../types/User";
+import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from "clsx";
 
-export function useOuterClick(dom: RefObject<HTMLElement>, callback: () => void): void {
+export function useOuterClick(
+  dom: RefObject<HTMLElement>,
+  callback: () => void,
+): void {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent): void {
       if (dom.current && !dom.current.contains(event.target as Node)) {
-        callback()
+        callback();
       }
     }
 
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        callback()
+        callback();
       }
     };
 
-    window.addEventListener('mousedown', handleClickOutside)
-    window.addEventListener('keydown', handleEscapeKey)
-    
+    window.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("keydown", handleEscapeKey);
+
     return () => {
-      window.removeEventListener('mousedown', handleClickOutside)
-      window.removeEventListener('keydown', handleEscapeKey)
-    }
-  }, [dom, callback])
+      window.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, [dom, callback]);
 }
 
 interface URLQueryParams {
@@ -38,7 +44,7 @@ export const formUrlQuery = ({ params, key, value }: URLQueryParams) => {
 
   return qs.stringifyUrl(
     { url: window.location.pathname, query: currentURL },
-    { skipNull: true }
+    { skipNull: true },
   );
 };
 
@@ -57,6 +63,16 @@ export const removeKeysFromQuery = ({
 
   return qs.stringifyUrl(
     { url: window.location.pathname, query: currentURL },
-    { skipNull: true }
+    { skipNull: true },
   );
 };
+
+export const getImageUrl = (user: UserType) => {
+  const index = Number(user.id.toString().slice(-2));
+  const urlimage = `https://randomuser.me/api/portraits/${user.gender === "female" ? "women" : "men"}/${index}.jpg`;
+  return urlimage;
+};
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}

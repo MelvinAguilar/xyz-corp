@@ -1,17 +1,16 @@
-import React from "react";
 import { UserType } from "../../types/User";
 import { Link } from "react-router-dom";
+import { getImageUrl } from "../../lib/utils";
 
 interface UserCardProps {
   user: UserType;
 }
 
 const UserCard = ({ user }: UserCardProps) => {
-  const index = Number(user.id.toString().slice(-2));
-  const urlimage = `https://randomuser.me/api/portraits/${user.gender === "female" ? "women" : "men"}/${index}.jpg`;
+  const urlimage = getImageUrl(user);
 
   return (
-    <div className="bg-secondary hover:bg-secondary-hover transition-all relative rounded-2xl border border-[#363749]/[.9] px-4 py-6 text-center">
+    <li className="bg-secondary hover:bg-secondary-hover transition-all relative rounded-2xl border border-[#363749]/[.9] px-4 py-6 text-center">
       <div className="flex flex-col items-center justify-between gap-4">
         <img
           className="size-32 rounded-full border-2 border-[#03BFCB] p-2"
@@ -43,7 +42,7 @@ const UserCard = ({ user }: UserCardProps) => {
           </Link>
         </div>
       </div>
-    </div>
+    </li>
   );
 };
 
