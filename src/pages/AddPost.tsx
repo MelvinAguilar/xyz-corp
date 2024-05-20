@@ -1,20 +1,24 @@
-import BackButton from "../components/buttons/BackButton";
+import { useParams } from "react-router-dom";
 import { Container } from "../components/Container";
-import UserForm from "../components/form/UserForm";
+import PostForm from "../components/form/PostForm";
 import SectionIntro from "../components/SectionIntro";
+import BackButton from "../components/buttons/BackButton";
 
-const AddUser = () => {
+const AddPost = () => {
+  const { id } = useParams();
+  const postId = id || "";
+
   return (
     <Container className="py-10 text-white">
       <BackButton />
       <SectionIntro
-        title="Crear usuario"
+        title="Crear un nuevo post"
         subtitle="Completa los campos para crear un nuevo usuario"
         generalClassName="!pt-0"
       />
-      <UserForm />
+      <PostForm id={postId} />
     </Container>
   );
 };
 
-export default AddUser;
+export default AddPost;

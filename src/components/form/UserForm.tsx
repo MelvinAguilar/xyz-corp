@@ -1,11 +1,12 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import Input from "./Input";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import { userSchema } from "../../validations/UserSchema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Select from "./Select";
 import { FilterType } from "../../types/common";
+import { createUser } from "../../services/xyzcorp.service";
 
 const genders: FilterType[] = [
   { id: 1, name: "Hombre", value: "male" },
@@ -28,12 +29,19 @@ const UserForm = () => {
     resolver: zodResolver(userSchema),
   });
 
-  const onSubmit: SubmitHandler<z.infer<typeof userSchema>> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<z.infer<typeof userSchema>> = async (data) => {
+    const response = await createUser(data);
+
+    if (response) {
+      toast.success("Usuario creado correctamente");
+      reset();
+    } else {
+      toast.error("Error al crear el usuario");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="col-span-4">
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Input
         innerRef={register("name")}
         name="name"
@@ -60,7 +68,7 @@ const UserForm = () => {
           </p>
         )}
       </div>
-      
+
       <div className="py-8">
         <Select
           control={control}
@@ -74,6 +82,7 @@ const UserForm = () => {
           </p>
         )}
       </div>
+      
       <div className="flex gap-8">
         <button
           type="button"

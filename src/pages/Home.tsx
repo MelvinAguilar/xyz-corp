@@ -7,6 +7,7 @@ import SearchBar from "../components/SearchBar";
 import { useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 import SectionIntro from "../components/SectionIntro";
+import { LinkComponent } from "../components/buttons/Button";
 
 const Home = () => {
   const location = useLocation();
@@ -60,11 +61,17 @@ const Home = () => {
             subtitle="Lista de usuarios"
             generalClassName="!pt-0 w-full"
           />
-          <section className="flex w-full items-center justify-end gap-8">
-            <p>Buscador</p>
-            <SearchBar />
-          </section>
+          <div>
+            <LinkComponent href="/add-user" className="w-max">
+              Crear usuario
+            </LinkComponent>
+          </div>
         </div>
+        
+        <section className="mb-8 flex w-full items-center justify-end gap-8">
+          <p>Buscador</p>
+          <SearchBar />
+        </section>
 
         {loading ? (
           <Loading />
