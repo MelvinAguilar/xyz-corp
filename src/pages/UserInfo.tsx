@@ -6,15 +6,19 @@ import { PostType } from "../types/Post";
 import { UserType } from "../types/User";
 import { getImageUrl } from "../lib/utils";
 import SectionIntro from "../components/SectionIntro";
+import Loading from "../components/Loading";
 
 const UserInfo = () => {
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
+
   // Fetch data from API
   const [user, setUser] = useState<UserType | null>(null);
   const [posts, setPosts] = useState<PostType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       const userData = await getUser(Number(id));
       setUser(userData);
 
@@ -22,10 +26,15 @@ const UserInfo = () => {
         const postData = await getPosts(userData.id);
         setPosts(postData);
       }
+      setLoading(false);
     };
 
     fetchData();
   }, [id]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   if (!user) {
     return (
