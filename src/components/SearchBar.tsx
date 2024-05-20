@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SearchIcon } from "./Icons";
 import { formUrlQuery, removeKeysFromQuery } from "../lib/utils";
