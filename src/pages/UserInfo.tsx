@@ -7,6 +7,7 @@ import { UserType } from "../types/User";
 import { getImageUrl } from "../lib/utils";
 import SectionIntro from "../components/SectionIntro";
 import Loading from "../components/Loading";
+import PostCard from "../components/cards/PostCard";
 
 const UserInfo = () => {
   const { id } = useParams();
@@ -48,7 +49,7 @@ const UserInfo = () => {
   const urlimage = getImageUrl(user);
 
   return (
-    <Container as="main" className="py-8 text-white">
+    <Container as="main" className="py-10 text-white">
       <SectionIntro
         title="Información del usuario"
         subtitle="Detalles del usuario y sus publicaciones"
@@ -79,6 +80,7 @@ const UserInfo = () => {
           </p>
         </section>
       </div>
+
       <SectionIntro
         title="Publicaciones"
         subtitle="Publicaciones del usuario"
@@ -88,13 +90,7 @@ const UserInfo = () => {
       {posts.length > 0 ? (
         <ul className="grid gap-8">
           {posts.map((post, index) => (
-            <li
-              key={index}
-              className="bg-secondary/50 rounded-2xl border border-[#363749]/[.9] p-8"
-            >
-              <h3 className="text-xl font-bold">{post.title}</h3>
-              <p className="text-[#A14A1AA]">{post.body}</p>
-            </li>
+            <PostCard key={index} post={post} />
           ))}
         </ul>
       ) : (

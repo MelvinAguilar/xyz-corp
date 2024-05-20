@@ -6,6 +6,7 @@ import { Container } from "../components/Container";
 import SearchBar from "../components/SearchBar";
 import { useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
+import SectionIntro from "../components/SectionIntro";
 
 const Home = () => {
   const location = useLocation();
@@ -51,22 +52,32 @@ const Home = () => {
   }, [query, users]);
 
   return (
-    <main className="py-8 text-white">
+    <main className="py-10 text-white">
       <Container className="min-h-[80vh]">
-        <SearchBar />
-        {loading && <Loading />}
+        <div className="flex flex-wrap items-center gap-8 lg:flex-nowrap">
+          <SectionIntro
+            title="Usuarios"
+            subtitle="Lista de usuarios"
+            generalClassName="!pt-0 w-full"
+          />
+          <section className="flex w-full items-center justify-end gap-8">
+            <p>Buscador</p>
+            <SearchBar />
+          </section>
+        </div>
 
-        {filteredUsers.length > 0 && !loading ? (
+        {loading ? (
+          <Loading />
+        ) : filteredUsers.length > 0 ? (
           <ul className="grid grid-cols-1 gap-8 py-8 sm:grid-cols-2 lg:grid-cols-3">
             {filteredUsers.map((user, index) => (
               <UserCard key={index} user={user} />
             ))}
           </ul>
         ) : (
-          <div className="min-h-inherit flex items-center justify-center">{
-            !loading &&
-            <p className="text-center">No se encontraron usuarios</p> 
-          }</div>
+          <div className="min-h-inherit flex items-center justify-center">
+            <p className="text-center">No se encontraron usuarios</p>
+          </div>
         )}
       </Container>
     </main>

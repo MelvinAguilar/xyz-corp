@@ -35,13 +35,13 @@ const SearchBar = () => {
     <div className="bg-secondary hover:bg-secondary-hover relative w-full  sm:max-w-[30rem]">
       <input
         type="text"
-        className="text-content w-full rounded-lg ring-[#363749]/[.9] ring-1 bg-transparent py-5 pl-[4.6rem] pr-3 text-sm shadow-lg"
+        className="w-full rounded-lg ring-[#363749]/[.9] ring-1 bg-transparent py-5 pl-[4.6rem] pr-3 shadow-lg"
         placeholder="Buscar un usuario"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         aria-label="Buscar un usuario"
       />
-      <SearchIcon className="text-content absolute left-[1.9375rem] top-[49%] -translate-y-1/2 transform" />
+      <SearchIcon className="absolute left-[1.9375rem] top-[49%] -translate-y-1/2 transform" />
     </div>
   );
 };

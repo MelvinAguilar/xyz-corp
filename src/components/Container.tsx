@@ -14,7 +14,7 @@ type ContainerProps<T extends React.ElementType> = {
   
     return (
       <Component
-        className={`w-full mx-auto max-w-[84rem] px-4 md:px-6 lg:px-8 ${className}`}
+        className={`w-full mx-auto max-w-[84rem] px-6 md:px-10 ${className}`}
       >
         {children}
       </Component>
